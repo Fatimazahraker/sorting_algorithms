@@ -12,8 +12,9 @@ void insertion_sort_list(listint_t **list)
     listint_t *liist = (*list)->next;
     listint_t *tmp_head = *list;
 
-    if (list == NULL || *list == NULL || (*list)->next == NULL)
-        return ;
+	(void) tmp_head;
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+        	return ;
 
 
     while (liist)
@@ -21,7 +22,7 @@ void insertion_sort_list(listint_t **list)
         listint_t *key = liist;
         listint_t *unsorted = liist->prev;
 
-        while (unsorted != NULL && unsorted->f > key->f)
+        while (unsorted != NULL && unsorted->n > key->n)
         {
             unsorted->next = key->next;
             if (key->next != NULL)
