@@ -38,6 +38,7 @@ void insertion_sort_list(listint_t **list)
 		{
 			*list = key;
 		}
+
 			unsorted = key->prev;
 			print_list(*list);
 		}
