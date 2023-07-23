@@ -9,18 +9,18 @@
 
 void insertion_sort_list(listint_t **list)
 {
-    listint_t *liist = (*list)->next;
+	listint_t *liist;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
-        	return ;
+		return ;
 
+	liist = (*list)->next;
+	while (liist)
+	{
+	listint_t *key = liist;
+	listint_t *unsorted = liist->prev;
 
-    while (liist)
-    {
-        listint_t *key = liist;
-        listint_t *unsorted = liist->prev;
-
-        while (unsorted != NULL && unsorted->n > key->n)
+	while (unsorted != NULL && unsorted->n > key->n)
 		{
 			unsorted->next = key->next;
 			if (key->next != NULL)
@@ -34,10 +34,11 @@ void insertion_sort_list(listint_t **list)
 		unsorted->prev = key;
 
 		if (key->prev == NULL)
+		{
 			*list = key;
+		}
 			unsorted = key->prev;
 			print_list(*list);
-			printf("\n");
 		}
 		liist = liist->next;
 	}
