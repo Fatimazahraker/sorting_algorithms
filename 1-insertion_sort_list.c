@@ -15,6 +15,7 @@ void insertion_sort_list(listint_t **list)
 		return;
 
 	liist = (*list)->next;
+
 	while (liist)
 	{
 	listint_t *key = liist;
