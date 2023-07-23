@@ -23,24 +23,24 @@ void insertion_sort_list(listint_t **list)
         listint_t *unsorted = liist->prev;
 
         while (unsorted != NULL && unsorted->n > key->n)
-        {
-            unsorted->next = key->next;
-            if (key->next != NULL)
-                key->next->prev = unsorted;
-            
-            key->next = unsorted;
-            key->prev = unsorted->prev;
-        
-            if (unsorted->prev != NULL)
-                unsorted->prev->next = key;
-            unsorted->prev = key;
+		{
+			unsorted->next = key->next;
+			if (key->next != NULL)
+		key->next->prev = unsorted;
 
-            if (key->prev == NULL)
-                *list = key;
-            unsorted = key->prev;
-            print_list(*list);
-	    printf("\n");
-        }
-        liist = liist->next;
-    }
+		key->next = unsorted;
+		key->prev = unsorted->prev;
+
+		if (unsorted->prev != NULL)
+		unsorted->prev->next = key;
+		unsorted->prev = key;
+
+		if (key->prev == NULL)
+			*list = key;
+			unsorted = key->prev;
+			print_list(*list);
+			printf("\n");
+		}
+		liist = liist->next;
+	}
 }
