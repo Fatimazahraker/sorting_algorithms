@@ -4,13 +4,14 @@
  * swap - swaps two integers
  * @a: the first integer
  * @b: the secd integer
+ * Return: void
  */
 void swap(int *a, int *b)
 {
-	int temp = *a;
+	int tmp = *a;
 
 	*a = *b;
-	*b = temp;
+	*b = tmp;
 }
 
 /**
