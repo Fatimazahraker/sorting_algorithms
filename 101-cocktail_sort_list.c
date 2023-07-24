@@ -8,6 +8,25 @@
  *
  */
 
+void swap(listint_t *left, listint_t *right, listint_t **list)
+{
+	listint_t *prev, *next;
+
+	prev = left->prev;
+	next = right->next;
+	if (prev)
+		prev->next = right;
+	else
+		*list = right;
+	right->prev = prev;
+	left->prev = right;
+	right->next = left;
+	left->next = next;
+	if (next)
+		next->prev = left;
+}
+
+/*
 void swap(listint_t *previ, listint_t *nexti, listint_t **list)
 {
 	listint_t *before, *after;
@@ -66,5 +85,42 @@ void cocktail_sort_list(listint_t **list)
 		start = current->next;
 	}while (swapped);
 }
+*/
 
+void cocktail_sort_list(listint_t **list)
+{
+	listint_t *start, *end, *current;
+	int swapped = 0;
+
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+
+	start = *list;
+	end = NULL;
+
+	do {
+		swapped = 0;
+		for (current = start; current != end; current = current->next)
+		{
+			if (current->n > current->next->n)
+			{
+				swap(current, current->next, list);
+				print_list(*list);
+				swapped = 1;
+			}
+		}
+		if (swapped == 0)
+			break;
+		end = current->prev;
+		swapped = 0;
+		for (current = end->prev; current != start; current = current->prev)
+			if (current->n < current->prev->n)
+			{
+				swap(current->prev, current, list);
+				print_list(*list);
+				swapped = 1;
+			}
+		start = current->next;
+	} while (swapped);
+}
 
