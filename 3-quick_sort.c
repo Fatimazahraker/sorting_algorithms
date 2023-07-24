@@ -24,8 +24,11 @@ void swap(int *a, int *b)
  */
 int the_partition(int *array, int beginning, int end, size_t size)
 {
-	int pivot = array[end];
-	int i = beginning - 1, j;
+	int pivot;
+	int i, j;
+
+	pivot = array[end];
+	i = beginning - 1;
 
 	for (j = beginning; j < end; j++)
 	{
