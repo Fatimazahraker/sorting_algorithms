@@ -72,7 +72,7 @@ void quick_recursive(int *array, int beginning, int end, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size <= 1)
+	if (array == NULL || size < 2)
 		return;
 
 	quick_recursive(array, 0, size - 1, size);
