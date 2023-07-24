@@ -29,7 +29,7 @@ int the_partition(int *array, int beginning, int end, size_t size)
 	for (j = beginning; j < end; j++)
 	{
 	if (array[j] <= pivot)
-        	{
+		{
 			i++;
 			if (i != j)
 			{
