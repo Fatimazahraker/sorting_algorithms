@@ -22,10 +22,12 @@ void insertion_sort_list(listint_t **list)
 	listint_t *unsorted = liist->prev;
 
 	while (unsorted != NULL && unsorted->n > key->n)
-		{
-			unsorted->next = key->next;
+	{
+		unsorted->next = key->next;
 			if (key->next != NULL)
-		key->next->prev = unsorted;
+			{
+				key->next->prev = unsorted;
+			}
 
 		key->next = unsorted;
 		key->prev = unsorted->prev;
