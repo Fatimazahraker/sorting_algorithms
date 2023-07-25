@@ -3,53 +3,26 @@
 #include "sort.h"
 
 /**
- *
- *
- *
+ * swap - SWAP
+ * @list: list
+ * @node1: list
+ * @node2: list
+ * return: void
  */
 
-void swap(listint_t *left, listint_t *right, listint_t **list)
+void swap(listint_t **list, listint_t *node1, listint_t *node2)
 {
-	listint_t *prev, *next;
-
-	prev = left->prev;
-	next = right->next;
-	if (prev)
-		prev->next = right;
-	else
-		*list = right;
-	right->prev = prev;
-	left->prev = right;
-	right->next = left;
-	left->next = next;
-	if (next)
-		next->prev = left;
+	node1->next = node2->next;
+	if (node2->next)
+		node2->next->prev = node1;
+	node2->prev = node1->prev;
+	if (node1->prev)
+		node1->prev->next = node2;
+	node1->prev = node2, node2->next = node1;
+	if (!node2->prev)
+		*list = node2;
+	print_list(*list);
 }
-
-/*
-void swap(listint_t *previ, listint_t *nexti, listint_t **list)
-{
-	listint_t *before, *after;
-
-	before = previ->prev;
-	after = nexti->next;
-	if(before)
-		before->next = nexti;
-	else
-		*list = nexti;
-	nexti->prev = before;
-	previ->prev = nexti;
-	nexti->next = previ;
-	previ->next = after;
-	if (after)
-		after->prev = previ;
-}
-
-void cocktail_sort_list(listint_t **list)
-{
-	listint_t *current, *end, *start;
-	int swapped = 0;
-
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
@@ -59,68 +32,38 @@ void cocktail_sort_list(listint_t **list)
 	
 	do{
 		swapped = 0;
-
-		for (current = start; current != end; current = current->next)
+		printf("before");
+		while (start->next != end)
 		{
-			if (current->n > current->next->n)
+			if (start->n > start->next->n)
 			{
-				swap(current, current->next, list);
+				swap(start, start->next, list);
 				print_list(*list);
 				swapped = 1;
 			}
+			else
+				start = start->next;
+			printf("!inside1");
 		}
 		if (swapped == 0)
 			break;
-		end = current->prev;
+		end = start;
+		start = end->prev;
 		swapped = 0;
-		for (current = end; current != start; current = current->prev)
+		while (start->prev != end)
 		{
-			if (current->n < current->prev->n)
+			if (start->n > start->next->n)
 			{
-				swap(current->prev, current, list);
+				swap(start, start->next, list);
 				print_list(*list);
 				swapped = 1;
 			}
+			else
+				start = start->next;
+			printf("inside2");
 		}
-		start = current->next;
+		end = end->prev;
+		printf("after");
 	}while (swapped);
-}
-*/
-
-void cocktail_sort_list(listint_t **list)
-{
-	listint_t *start, *end, *current;
-	int swapped = 0;
-
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
-	start = *list;
-	end = NULL;
-
-	do {
-		swapped = 0;
-		for (current = start; current != end; current = current->next)
-		{
-			if (current->n > current->next->n)
-			{
-				swap(current, current->next, list);
-				print_list(*list);
-				swapped = 1;
-			}
-		}
-		if (swapped == 0)
-			break;
-		end = current->prev;
-		swapped = 0;
-		for (current = end->prev; current != start; current = current->prev)
-			if (current->n < current->prev->n)
-			{
-				swap(current->prev, current, list);
-				print_list(*list);
-				swapped = 1;
-			}
-		start = current->next;
-	} while (swapped);
 }
 
