@@ -3,7 +3,7 @@
 #include "sort.h"
 
 /**
- * swap - SWAP
+ * swap1 - SWAP
  * @list: list
  * @node1: list
  * @node2: list
