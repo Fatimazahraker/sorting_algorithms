@@ -14,7 +14,7 @@ int max(int *a, size_t size)
 	for (i = 1; i < size; i++)
 		if (max < a[i])
 			max = a[i];
-	return (max)
+	return (max);
 }
 
 /**
