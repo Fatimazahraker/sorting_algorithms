@@ -40,7 +40,7 @@ void cocktail_sort_list(listint_t **list)
 		swapped = 0;
 		for (; node->next; node = node->next)
 		{
-			if(node->n > node->next->n)
+			if (node->n > node->next->n)
 			{
 				swapped = 1;
 				next_n = node->next;
