@@ -23,3 +23,42 @@ void swap(listint_t **list, listint_t *node1, listint_t *node2)
 		*list = node2;
 	print_list(*list);
 }
+/**
+ * cocktail_sort_list - insertion sort algorithm
+ * @list: list
+ * Return: nothing
+ */
+void cocktail_sort_list(listint_t **list)
+{
+	listint_t *node, *next-n, *prev-n;
+	int swapped;
+
+	if (!list || !(*list) || !(*list)->next)
+		return;
+	node = *list;
+	do {
+		swapped = 0;
+		for (; node->next; node = node->next)
+		{
+			if(node->n > node->next->n)
+			{
+				swapped = 1;
+				next-n = node->next;
+				swap(list, node, next-n);
+				node = next-n;
+			}
+		}
+		if (!swapped)
+			break;
+		for (; node->prev; node = node->prev)
+		{
+			if (node->n < node->prev->n)
+			{
+				swapped = 1;
+				prev-n = node->prev;
+				swap(list, prev-n, node);
+				node = prev-n;
+			}
+		}
+	} while (swapped)
+}
