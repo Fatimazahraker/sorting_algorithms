@@ -44,7 +44,7 @@ void cocktail_sort_list(listint_t **list)
 			{
 				swapped = 1;
 				next_n = node->next;
-				swap(list, node, next_n);
+				swap1(list, node, next_n);
 				node = next_n;
 			}
 		}
@@ -56,7 +56,7 @@ void cocktail_sort_list(listint_t **list)
 			{
 				swapped = 1;
 				prev_n = node->prev;
-				swap(list, prev_n, node);
+				swap1(list, prev_n, node);
 				node = prev_n;
 			}
 		}
