@@ -10,7 +10,7 @@
  * return: void
  */
 
-void swap(listint_t **list, listint_t *node1, listint_t *node2)
+void swap1(listint_t **list, listint_t *node1, listint_t *node2)
 {
 	node1->next = node2->next;
 	if (node2->next)
